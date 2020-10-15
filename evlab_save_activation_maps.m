@@ -34,7 +34,7 @@ function evlab_save_activation_maps(varargin)
     end
     varargin{6}=evlab_find_contrast(varargin);
     if varargin{6}
-        varargin{7}=spm_render_evlab(varargin{6},NaN,fullfile(temp_software_dir,'render_single_subj.mat'),varargin{5});
+varargin{7}=spm_render_evlab(varargin{6},NaN,fullfile(temp_software_dir,'func','render_single_subj.mat'),varargin{5});
         if ~exist(varargin{4},'dir') && ~exist([pwd '/evlab_activations_output'],'dir')
             warning('Error finding output directory, creating a default output folder.')
             mkdir([pwd '/evlab_activations_output']);
