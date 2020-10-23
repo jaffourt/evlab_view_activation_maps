@@ -17,7 +17,7 @@ function evlab_save_activation_maps(varargin)
     %             ex: 0.0001
 
     addpath('./func')
-    temp_software_dir=[pwd]; % if you move/copy this software, change this
+    temp_software_dir=[pwd];
     if isempty(varargin)
         error('No parameters provided.');
     elseif size(varargin)<4
