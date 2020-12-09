@@ -15,9 +15,6 @@ function evlab_save_activation_maps(varargin)
     %   OPTIONAL INPUT
     %   p_value: double value of p-val thresholding
     %             ex: 0.0001
-
-    addpath('./func')
-    temp_software_dir=[pwd];
     if isempty(varargin)
         error('No parameters provided.');
     elseif size(varargin)<4
@@ -26,6 +23,8 @@ function evlab_save_activation_maps(varargin)
         disp('By default p-val set to 0.001.');
         varargin{5}=0.001;
     end
+    home=fileparts(mfilename('fullpath'));
+    addpath(home);
     if ~exist(which('spm'),'file')
         addpath('/om/group/evlab/software/spm12');
     elseif ~strcmp(which('spm'),'/om/group/evlab/software/spm12/spm.m')
@@ -34,9 +33,9 @@ function evlab_save_activation_maps(varargin)
     end
     varargin{6}=evlab_find_contrast(varargin);
     if varargin{6}
-        varargin{7}=spm_render_evlab(varargin{6},NaN,fullfile(temp_software_dir,'func','render_single_subj.mat'),varargin{5});
+        varargin{7}=spm_render_evlab(varargin{6},NaN,fullfile(home,'func','render_single_subj.mat'),varargin{5});
         if ~exist(varargin{4},'dir') && ~exist([pwd '/evlab_activations_output'],'dir')
-            warning('Error finding output directory, creating a default output folder.')
+            warning('Error finding output directory, creating a default output folder in current directory.')
             mkdir([pwd '/evlab_activations_output']);
             saveas(varargin{7},fullfile([pwd '/evlab_activations_output'],[varargin{1} '_' varargin{3} '.png']));
         elseif exist(varargin{4},'dir')
