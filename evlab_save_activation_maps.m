@@ -24,7 +24,7 @@ function evlab_save_activation_maps(varargin)
         varargin{5}=0.001;
     end
     home=fileparts(mfilename('fullpath'));
-    addpath(fullfile(home,'common')));
+    addpath(fullfile(home,'common'));
     if ~exist(which('spm'),'file')
         addpath('/om/group/evlab/software/spm12');
     elseif ~strcmp(which('spm'),'/om/group/evlab/software/spm12/spm.m')
