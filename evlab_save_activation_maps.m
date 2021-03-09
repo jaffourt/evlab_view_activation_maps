@@ -45,5 +45,7 @@ function evlab_save_activation_maps(varargin)
             saveas(varargin{7},fullfile([pwd '/evlab_activations_output'],[varargin{1} '_' varargin{3} '.png']));
         end
         close(varargin{7});
+    else
+      warning('Contrast not found in subject SPM.mat file.');
     end
 end

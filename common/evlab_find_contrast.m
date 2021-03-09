@@ -15,6 +15,7 @@ function varargout = evlab_find_contrast(varargin)
             load(fullfile(varargout{1},'SPM.mat'),'SPM');
         end
         [~,idx] = ismember(varargin{1}{3}, {SPM.xCon.name});
+	if idx == 0 varargout{1}=[]; return; end
         varargout{1}=fullfile(varargout{1},sprintf('spmT_%04d',idx));
         if exist([varargout{1} '.nii'],'file')
             varargout{1}=[varargout{1} '.nii'];
